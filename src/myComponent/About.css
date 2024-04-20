@@ -1,10 +1,11 @@
-.about {
-    background-color: lightblue; /* Add this line to see if the background color is applied */
-  }
-  
+
   h1, h2 {
-    color: yellow; /* Add this line to see if the text color is applied */
+    color: rgb(43, 15, 154); /* Add this line to see if the text color is applied */
   }
-  p{
+  .mypara{
     line-height: 1.8;
+    background-color: lightblue;
+  }
+  .about{
+    padding: 60px;
   }
