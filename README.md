@@ -9,7 +9,7 @@ MyToDoList is a simple and intuitive web application that allows you to create, 
 - **Persistent Tasks**: Even if you refresh the page, your tasks will remain intact, ensuring uninterrupted productivity.
 ## Screenshot
 Here's a glimpse of MyToDoList:
-![MyToDoList Screenshot](./show.png.png)
+![MyToDoList Screenshot](./show.png)
 ## Getting Started
 To get started with MyToDoList, follow these simple steps:
 1. **Clone the Repository**:
