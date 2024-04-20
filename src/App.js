@@ -7,26 +7,35 @@ import { About } from "./myComponent/about";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
-  let initTodo;
-  if (localStorage.getItem("todos") === null) {
-    initTodo = [];
-  } else {
-    initTodo = JSON.parse(localStorage.getItem("todos"));
-  }
+// Initialize the state variable 'todos' with the value from localStorage or an empty array
+let initTodo;
+if (localStorage.getItem("todos") === null) {
+  initTodo = [];
+} else {
+  initTodo = JSON.parse(localStorage.getItem("todos"));
+}
 
+function App() {
+  // State variable 'todos' to store the list of todos
+  const [todos, setTodos] = useState(initTodo);
+
+  // Function to delete a todo
   const onDelete = (todo) => {
     console.log("I am ondelete of todo", todo);
 
+    // Filter out the todo to be deleted from the 'todos' array
     setTodos(
       todos.filter((e) => {
         return e !== todo;
       })
     );
     console.log("deleted", todos);
+
+    // Update the localStorage with the new 'todos' array
     localStorage.setItem("todos", JSON.stringify(todos));
   };
 
+  // Function to add a new todo
   const addTodo = (title, desc) => {
     console.log("I am adding this todo", title, desc);
     let sno;
@@ -40,11 +49,11 @@ function App() {
       title: title,
       desc: desc,
     };
-    setTodos([...todos, myTodo]);
+    setTodos([...todos, myTodo]); // Add the new todo to the 'todos' array
     console.log(myTodo);
   };
 
-  const [todos, setTodos] = useState(initTodo);
+  // UseEffect hook to update the localStorage whenever the 'todos' array changes
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -57,10 +66,10 @@ function App() {
             path="/"
             element={
               <>
-                <Header title="My Todos List" searchBar={true} />
-                <AddTodo addTodo={addTodo} />
-                <Todos todos={todos} onDelete={onDelete} />
-                <Footers />
+                <Header title="My Todos List" searchBar={true} /> {/* Header component with title and search bar */}
+                <AddTodo addTodo={addTodo} /> {/* AddTodo component to add a new todo */}
+                <Todos todos={todos} onDelete={onDelete} /> {/* Todos component to display the list of todos */}
+                <Footers /> {/* Footers component */}
               </>
             }
           />
@@ -68,9 +77,9 @@ function App() {
             path="/about"
             element={
               <>
-                <Header />
-                <About />
-                <Footers />
+                <Header /> {/* Header component without title and search bar */}
+                <About /> {/* About component */}
+                <Footers /> {/* Footers component */}
               </>
             }
           />

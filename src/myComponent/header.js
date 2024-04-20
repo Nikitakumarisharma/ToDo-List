@@ -2,14 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+// Props: title (string), searchBar (boolean)
 export default function Header(props) {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid py-3">
+          {/* Display the title */}
           <a className="navbar-brand" to="#">
             {props.title}
           </a>
+          {/* Display the home and about links */}
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link to="/">
@@ -26,6 +29,7 @@ export default function Header(props) {
               </Link>
             </li>
           </ul>
+          {/* Display the toggle button for the navbar */}
           <button
             className="navbar-toggler"
             type="button"
@@ -37,6 +41,7 @@ export default function Header(props) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+          {/* Display the search bar if the searchBar prop is true */}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -64,6 +69,7 @@ export default function Header(props) {
   );
 }
 
+// Define the propTypes for the Header component
 Header.propTypes = {
   title: PropTypes.string,
 };
