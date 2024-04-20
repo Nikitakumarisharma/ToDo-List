@@ -1,0 +1,10 @@
+.about {
+    background-color: lightblue; /* Add this line to see if the background color is applied */
+  }
+  
+  h1, h2 {
+    color: yellow; /* Add this line to see if the text color is applied */
+  }
+  p{
+    line-height: 1.8;
+  }
