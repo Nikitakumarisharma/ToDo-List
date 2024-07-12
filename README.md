@@ -17,5 +17,4 @@ To get started with MyToDoList, follow these simple steps:
 git clone https://todo-list-snowy-zeta.vercel.app/
 
 **To start the project**
-```bash
 npm start
