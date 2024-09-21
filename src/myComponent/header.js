@@ -6,63 +6,29 @@ import { Link } from "react-router-dom";
 export default function Header(props) {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary header">
         <div className="container-fluid py-3">
-          {/* Display the title */}
-          <a className="navbar-brand" to="#">
+          {/* Display the title with bold styling */}
+          <div className="navbar-brand title" style={{ fontWeight: 'bold' }}>
             {props.title}
-          </a>
+          </div>
+
           {/* Display the home and about links */}
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-auto mb-1 mb-lg-2">
             <li className="nav-item">
-              <Link to="/">
-                <a className="nav-link active" aria-current="page" to="#">
-                  Home
-                </a>
+              <Link to="/" className="nav-link active lg:mx-4 mx-1" aria-current="page">
+                Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/about">
-                <a className="nav-link" href="#">
-                  About
-                </a>
+              <Link to="/about" className="nav-link">
+                About
               </Link>
             </li>
           </ul>
-          {/* Display the toggle button for the navbar */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          {/* Display the search bar if the searchBar prop is true */}
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                {props.searchBar ? (
-                  <form className="d-flex">
-                    <input
-                      className="form-control me-2"
-                      type="search"
-                      placeholder="Search"
-                      aria-label="Search"
-                    />
-                    <button className="btn btn-outline-success" type="submit">
-                      Search
-                    </button>
-                  </form>
-                ) : (
-                  "no seach bar"
-                )}
-              </li>
-            </ul>
-          </div>
+
+          {/* Login button */}
+          <button className="loginHeader">Login</button>
         </div>
       </nav>
     </>
@@ -71,5 +37,5 @@ export default function Header(props) {
 
 // Define the propTypes for the Header component
 Header.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };

@@ -19,21 +19,18 @@ function App() {
   // State variable 'todos' to store the list of todos
   const [todos, setTodos] = useState(initTodo);
 
-  // Function to delete a todo
   const onDelete = (todo) => {
-    console.log("I am ondelete of todo", todo);
-
-    // Filter out the todo to be deleted from the 'todos' array
-    setTodos(
-      todos.filter((e) => {
-        return e !== todo;
-      })
-    );
-    console.log("deleted", todos);
-
-    // Update the localStorage with the new 'todos' array
-    localStorage.setItem("todos", JSON.stringify(todos));
+    const updatedTodos = todos.filter((e) => e !== todo);
+    setTodos(updatedTodos);
   };
+
+  const onEdit = (updatedTodo) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.sno === updatedTodo.sno ? updatedTodo : todo
+    );
+    setTodos(updatedTodos);
+  };
+
 
   // Function to add a new todo
   const addTodo = (title, desc) => {
@@ -66,9 +63,9 @@ function App() {
             path="/"
             element={
               <>
-                <Header title="My Todos List" searchBar={true} /> {/* Header component with title and search bar */}
+                <Header title="My Todos List" /> {/* Header component with title and search bar */}
                 <AddTodo addTodo={addTodo} /> {/* AddTodo component to add a new todo */}
-                <Todos todos={todos} onDelete={onDelete} /> {/* Todos component to display the list of todos */}
+                <Todos todos={todos} onDelete={onDelete} onEdit={onEdit} /> {/* Todos component to display the list of todos */}
                 <Footers /> {/* Footers component */}
               </>
             }

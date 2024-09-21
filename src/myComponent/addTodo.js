@@ -4,24 +4,24 @@ import React, { useState } from 'react';
 export const AddTodo = ({ addTodo }) => {
   // State variables for the todo title and description
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
+  // const [desc, setDesc] = useState("");
 
   // Submit function to handle the form submission
   const submit = (e) => {
     e.preventDefault();
-    if (!title || !desc) {
+    if (!title) {
       alert("Title or Description cannot be blank");
     } else {
       // Call the addTodo function with the title and description
-      addTodo(title, desc);
+      addTodo(title);
       // Clear the input fields
       setTitle("");
-      setDesc("");
+      // setDesc("");
     }
   };
 
   return (
-    <div className="container my-3">
+    <div className="container my-5">
       <h3>Add a Todo</h3>
       {/* Display the form */}
       <form onSubmit={submit}>
@@ -36,9 +36,10 @@ export const AddTodo = ({ addTodo }) => {
             className="form-control"
             id="title"
             aria-describedby="emailHelp"
+            placeholder='Write your todo work here'
           />
         </div>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <label htmlFor="desc" className="form-label">
             Todo Description
           </label>
@@ -49,7 +50,7 @@ export const AddTodo = ({ addTodo }) => {
             className="form-control"
             id="desc"
           />
-        </div>
+        </div> */}
         {/* Display the submit button */}
         <button type="submit" className="btn btn-sm btn-success">
           Add Todo
